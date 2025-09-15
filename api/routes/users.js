@@ -6,7 +6,6 @@ const CryptoJS = require("crypto-js");
 //update
 router.patch("/:id", verifyToken, async (req, res) => {
   if (req.user.id === req.params.id || req.user.isAdmin) {
-    console.log(req.body);
     if (req.body.password) {
       req.body.password = CryptoJS.AES.encrypt(
         req.body.password,
