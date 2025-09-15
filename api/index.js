@@ -3,8 +3,10 @@ const app = express();
 const mongoose = require("mongoose");
 const routes = require("#routes/index");
 const { createServer } = require("http");
-const User = require("#models/User");
 
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config();
+}
 
 mongoose
   .connect(process.env.MONGO_URL)
@@ -16,17 +18,7 @@ const server = createServer(app);
 routes(app);
 
 app.get("/", (req, res) => {
-  res.send("Hello from Express on Vercel!!");
-});
-
-app.get("/find/:id", async (req, res) => {
-  try {
-    const user = await User.findById(req.params.id);
-    const { password, ...info } = user._doc;
-    res.status(200).json(info);
-  } catch (err) {
-    res.status(500).json(err);
-  }
+  res.send("Hello from Express on Vercel!");
 });
 
 server.listen(8800, () => {
