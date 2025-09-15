@@ -18,7 +18,7 @@ const server = createServer(app);
 routes(app);
 
 app.get("/", (req, res) => {
-  res.send("Hello from Express on Vercel!");
+  res.send("Hello from Express on Vercel!!");
 });
 
 app.get("/find/:id", async (req, res) => {
