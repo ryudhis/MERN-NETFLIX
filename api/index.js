@@ -1,12 +1,10 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
-const dotenv = require("dotenv");
 const routes = require("#routes/index");
 const { createServer } = require("http");
 const User = require("#models/User");
 
-dotenv.config();
 
 mongoose
   .connect(process.env.MONGO_URL)
